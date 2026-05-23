@@ -1,0 +1,145 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #0077ff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #0077ff;
+    color: white;
+}
+
+.weather-card {
+    margin-top: 20px;
+}
+
+.weather-card img {
+    width: 120px;
+}
+
+.weather-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.weather-card h3 {
+    font-size: 3rem;
+    margin: 10px 0;
+}
+
+.description {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.detail-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.detail-box h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.detail-box p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.error {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #fff;
+    font-weight: 500;
+}
+
+@media(max-width: 500px) {
+
+    form {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .details {
+        flex-direction: column;
+    }
+}
