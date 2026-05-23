@@ -1,12 +1,16 @@
 // Weather App JavaScript
 
-// Select elements
+// Select Elements
 const weatherCard = document.querySelector(".weather-card");
 const searchButton = document.querySelector("button");
 const inputField = document.querySelector("input");
+const form = document.querySelector("form");
+const loader = document.getElementById("loader");
+const descriptionElement = document.querySelector(".description");
 
-// Add button click animation
+// Button Click Animation
 searchButton.addEventListener("click", () => {
+
     searchButton.style.transform = "scale(0.95)";
 
     setTimeout(() => {
@@ -14,54 +18,116 @@ searchButton.addEventListener("click", () => {
     }, 150);
 });
 
-// Input focus effect
+// Input Focus Effect
 inputField.addEventListener("focus", () => {
-    inputField.style.boxShadow = "0 0 15px rgba(255,255,255,0.8)";
+
+    inputField.style.boxShadow =
+        "0 0 15px rgba(255,255,255,0.8)";
 });
 
 inputField.addEventListener("blur", () => {
+
     inputField.style.boxShadow = "none";
 });
 
-// Fade-in animation for weather card
+// Fade-In Animation for Weather Card
 if (weatherCard) {
+
     weatherCard.style.opacity = "0";
     weatherCard.style.transform = "translateY(20px)";
 
     setTimeout(() => {
-        weatherCard.style.transition = "all 0.8s ease";
+
+        weatherCard.style.transition =
+            "all 0.8s ease";
+
         weatherCard.style.opacity = "1";
-        weatherCard.style.transform = "translateY(0)";
+
+        weatherCard.style.transform =
+            "translateY(0)";
+
     }, 200);
 }
 
-// Dynamic background based on temperature
-const temperatureElement = document.querySelector(".weather-card h3");
+// Dynamic Background Based on Weather Condition
+if (descriptionElement) {
 
-if (temperatureElement) {
+    let weatherCondition =
+        descriptionElement.innerText.toLowerCase();
 
-    let temp = parseInt(temperatureElement.innerText);
+    // Clear Weather
+    if (weatherCondition.includes("clear")) {
 
-    if (temp <= 10) {
+        document.body.style.background =
+            "linear-gradient(135deg, #f6d365, #fda085)";
+    }
+
+    // Cloudy Weather
+    else if (weatherCondition.includes("cloud")) {
+
+        document.body.style.background =
+            "linear-gradient(135deg, #bdc3c7, #2c3e50)";
+    }
+
+    // Rainy Weather
+    else if (weatherCondition.includes("rain")) {
+
+        document.body.style.background =
+            "linear-gradient(135deg, #4b79a1, #283e51)";
+    }
+
+    // Snow Weather
+    else if (weatherCondition.includes("snow")) {
+
+        document.body.style.background =
+            "linear-gradient(135deg, #e6dada, #274046)";
+    }
+
+    // Thunderstorm
+    else if (weatherCondition.includes("thunderstorm")) {
+
+        document.body.style.background =
+            "linear-gradient(135deg, #232526, #414345)";
+    }
+
+    // Default Background
+    else {
+
         document.body.style.background =
             "linear-gradient(135deg, #4facfe, #00f2fe)";
     }
-
-    else if (temp > 10 && temp <= 25) {
-        document.body.style.background =
-            "linear-gradient(135deg, #43cea2, #185a9d)";
-    }
-
-    else {
-        document.body.style.background =
-            "linear-gradient(135deg, #ff9966, #ff5e62)";
-    }
 }
 
-// Press Enter to search
+// Loader Animation on Form Submit
+form.addEventListener("submit", () => {
+
+    loader.style.display = "block";
+});
+
+// Press Enter to Search
 inputField.addEventListener("keypress", function (event) {
 
     if (event.key === "Enter") {
+
         searchButton.click();
     }
+});
+
+// Forecast Cards Hover Animation
+const forecastCards =
+    document.querySelectorAll(".forecast-card");
+
+forecastCards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+
+        card.style.transform =
+            "translateY(-8px) scale(1.03)";
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+            "translateY(0) scale(1)";
+    });
 });
