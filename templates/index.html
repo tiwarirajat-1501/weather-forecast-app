@@ -18,18 +18,26 @@
 
         <!-- Search Form -->
         <form method="POST">
+
             <input type="text" name="city" placeholder="Enter city name..." required autofocus>
+
             <button type="submit">Search</button>
+
         </form>
+
+        <!-- Loader -->
+        <div class="loader" id="loader"></div>
 
         <!-- Error Message -->
         {% if error %}
+
         <div class="error">
             <p>{{ error }}</p>
         </div>
+
         {% endif %}
 
-        <!-- Weather Data -->
+        <!-- Weather Card -->
         {% if weather %}
 
         <div class="weather-card">
@@ -38,15 +46,24 @@
                 {{ weather.city }}, {{ weather.country }}
             </h2>
 
+            <!-- Weather Icon -->
             <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
 
+            <!-- Temperature -->
             <h3>{{ weather.temperature }}°C</h3>
 
+            <!-- Description -->
             <p class="description">
                 {{ weather.description }}
             </p>
 
+            <!-- Weather Details -->
             <div class="details">
+
+                <div class="detail-box">
+                    <h4>Feels Like</h4>
+                    <p>{{ weather.feels_like }}°C</p>
+                </div>
 
                 <div class="detail-box">
                     <h4>Humidity</h4>
@@ -57,6 +74,52 @@
                     <h4>Wind Speed</h4>
                     <p>{{ weather.wind_speed }} m/s</p>
                 </div>
+
+                <div class="detail-box">
+                    <h4>Pressure</h4>
+                    <p>{{ weather.pressure }} hPa</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Sunrise</h4>
+                    <p>{{ weather.sunrise }}</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Sunset</h4>
+                    <p>{{ weather.sunset }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <!-- 5-Day Forecast -->
+        {% if forecast_list %}
+
+        <div class="forecast-container">
+
+            <h2>5-Day Forecast</h2>
+
+            <div class="forecast-cards">
+
+                {% for forecast in forecast_list %}
+
+                <div class="forecast-card">
+
+                    <p>{{ forecast.date }}</p>
+
+                    <img src="https://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png" alt="Forecast Icon">
+
+                    <h3>{{ forecast.temp }}°C</h3>
+
+                    <p>{{ forecast.description }}</p>
+
+                </div>
+
+                {% endfor %}
 
             </div>
 
