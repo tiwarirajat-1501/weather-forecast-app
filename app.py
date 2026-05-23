@@ -32,7 +32,7 @@ def index():
                 }
 
             else:
-                error = "City not found."
+                error = data.get("message", "Something went wrong.")
 
         except Exception as e:
             error = f"Error: {e}"
