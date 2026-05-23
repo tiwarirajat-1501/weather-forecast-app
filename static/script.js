@@ -14,7 +14,9 @@ searchButton.addEventListener("click", () => {
     searchButton.style.transform = "scale(0.95)";
 
     setTimeout(() => {
+
         searchButton.style.transform = "scale(1)";
+
     }, 150);
 });
 
@@ -34,7 +36,9 @@ inputField.addEventListener("blur", () => {
 if (weatherCard) {
 
     weatherCard.style.opacity = "0";
-    weatherCard.style.transform = "translateY(20px)";
+
+    weatherCard.style.transform =
+        "translateY(20px)";
 
     setTimeout(() => {
 
@@ -55,39 +59,61 @@ if (descriptionElement) {
     let weatherCondition =
         descriptionElement.innerText.toLowerCase();
 
-    // Clear Weather
+    // Remove default animated background
+    document.body.style.animation = "none";
+
+    // Clear Sky
     if (weatherCondition.includes("clear")) {
 
         document.body.style.background =
             "linear-gradient(135deg, #f6d365, #fda085)";
     }
 
-    // Cloudy Weather
-    else if (weatherCondition.includes("cloud")) {
+    // Clouds
+    else if (
+        weatherCondition.includes("cloud")
+    ) {
 
         document.body.style.background =
             "linear-gradient(135deg, #bdc3c7, #2c3e50)";
     }
 
-    // Rainy Weather
-    else if (weatherCondition.includes("rain")) {
+    // Rain
+    else if (
+        weatherCondition.includes("rain")
+    ) {
 
         document.body.style.background =
             "linear-gradient(135deg, #4b79a1, #283e51)";
     }
 
-    // Snow Weather
-    else if (weatherCondition.includes("snow")) {
+    // Snow
+    else if (
+        weatherCondition.includes("snow")
+    ) {
 
         document.body.style.background =
             "linear-gradient(135deg, #e6dada, #274046)";
     }
 
     // Thunderstorm
-    else if (weatherCondition.includes("thunderstorm")) {
+    else if (
+        weatherCondition.includes("thunderstorm")
+    ) {
 
         document.body.style.background =
             "linear-gradient(135deg, #232526, #414345)";
+    }
+
+    // Haze / Mist / Fog
+    else if (
+        weatherCondition.includes("haze") ||
+        weatherCondition.includes("mist") ||
+        weatherCondition.includes("fog")
+    ) {
+
+        document.body.style.background =
+            "linear-gradient(135deg, #757f9a, #d7dde8)";
     }
 
     // Default Background
