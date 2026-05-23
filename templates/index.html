@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌦 Weather Forecast App</h1>
+
+        <!-- Search Form -->
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name..." required autofocus>
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Error Message -->
+        {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Weather Data -->
+        {% if weather %}
+
+        <div class="weather-card">
+
+            <h2>
+                {{ weather.city }}, {{ weather.country }}
+            </h2>
+
+            <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
+
+            <h3>{{ weather.temperature }}°C</h3>
+
+            <p class="description">
+                {{ weather.description }}
+            </p>
+
+            <div class="details">
+
+                <div class="detail-box">
+                    <h4>Humidity</h4>
+                    <p>{{ weather.humidity }}%</p>
+                </div>
+
+                <div class="detail-box">
+                    <h4>Wind Speed</h4>
+                    <p>{{ weather.wind_speed }} m/s</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
