@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Your OpenWeather API Key
-API_KEY = "YOUR_API_KEY)"
+API_KEY = "YOUR_API_KEY"
 
 
 @app.route("/", methods=["GET", "POST"])
